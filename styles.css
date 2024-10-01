@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden; /* Remove scrollbar */
+    background-image: url(./images/bgred.png);  
+    background-size: 110%; /* Enlarge the background image */
+    background-position: left center; /* Shift background image to the left */
+    background-repeat: no-repeat;
+    background-color: black;
+    
+}
+
+header {
+    color: rgb(252, 0, 0);
+    text-align: center;
+    padding: 1em 0;
+    height: 8vh; /* Reduced height for the header */
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 72vh; /* Reduced height to create space above and below */
+    padding: 0 5%;
+    margin-top: 10vh; /* Gap between header and main content */
+    margin-bottom: 10vh; /* Gap between bottom and main content */
+}
+
+.pillar-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+}
+
+.pillar {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Prevent background from repeating */
+    height: 100%;
+    width: 15%; /* Initial narrow width */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+    background-color: black;
+}
+
+.pillar-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 1em;
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly opacitated black background */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.pillar:hover {
+    background-size: contain; /* Ensure the whole image fits within the pillar */
+    background-position: center; /* Center the image within the pillar */
+    width: 100%; /* Expand the hovered pillar to full width */
+}
+
+.pillar-container:hover .pillar {
+    opacity: 0.3; /* Dim non-hovered pillars */
+    width: 10%; /* Shrink the non-hovered pillars */
+    transition: all 0.5s ease-in-out;
+}
+
+.pillar-container .pillar:hover {
+    opacity: 1; /* Keep the hovered pillar fully visible */
+    width: 100%; /* Expand the hovered pillar */
+    height: 100%;
+}
+
+.popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the popup */
+    background: rgba(0, 0, 0, 0.9); /* Fallback background */
+    padding: 2em;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    border-radius: 15px; /* More rounded corners */
+    width: 80vw; /* Adjust width to take most of the screen */
+    height: 80vh; /* Adjust height to take most of the screen */
+    background-size: cover; /* Ensure background image covers the popup */
+    background-position: center; /* Center the background image */
+    overflow: auto;
+    opacity: 1; /* Ensure full opacity */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.popup-content {
+    position: relative;
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.7); /* Slightly opacitated black background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 1em; /* Add some padding for better spacing */
+}
+
+.popup img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; /* Slightly rounded image */
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.popup.show {
+    display: block; /* Show the popup */
+}
+
+.popup.hide {
+    display: block;
+    opacity: 0; /* Fully transparent */
+    transform: translate(-50%, -50%) scale(0.9); /* Slightly scaled down for hide effect */
+}
